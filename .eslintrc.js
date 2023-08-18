@@ -1,16 +1,20 @@
 // .eslintrc.js example
 module.exports = {
-  "env": {
-      "browser": true,
-      "es2021": true
+  env: {
+    browser: true,
+    es2021: true,
+    node: true,
   },
-  "extends": [
+  extends: [
     "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
     // Prettier is last.
-    "prettier"
+    "prettier",
   ],
-  "parserOptions": {
-      "ecmaVersion": "latest",
-      "sourceType": "module"
+  parser: "@typescript-eslint/parser",
+  parserOptions: {
+    ecmaVersion: "latest",
+    sourceType: "module",
   },
-}
+  plugins: ["@typescript-eslint"],
+};
