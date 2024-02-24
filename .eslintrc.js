@@ -1,4 +1,8 @@
 // .eslintrc.js example
+const { resolve } = require('node:path');
+
+const project = resolve(__dirname, 'tsconfig.json');
+
 module.exports = {
   env: {
     browser: true,
@@ -6,15 +10,17 @@ module.exports = {
     node: true,
   },
   extends: [
-    "eslint:recommended",
-    "plugin:@typescript-eslint/recommended",
-    // Prettier is last.
-    "prettier",
+    require.resolve('@vercel/style-guide/eslint/node'),
+    require.resolve('@vercel/style-guide/eslint/typescript'),
   ],
-  parser: "@typescript-eslint/parser",
   parserOptions: {
-    ecmaVersion: "latest",
-    sourceType: "module",
+    project,
   },
-  plugins: ["@typescript-eslint"],
+  settings: {
+    'import/resolver': {
+      typescript: {
+        project,
+      },
+    },
+  },
 };
